@@ -369,7 +369,7 @@ void ListIntController::removeElementFromList() {
         }
 
         requiredListInt->removeElement(x);
-        std::cout << "Выполнено." << std::flush;
+        std::cout << "Выполнено." << std::endl;
     } while (true);
 
     TerminalController::disableInput();
