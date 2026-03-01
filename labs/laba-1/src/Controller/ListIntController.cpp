@@ -218,7 +218,7 @@ void ListIntController::outputData() {
             out << list[i] << " ";
         }
 
-        std::cout << std::endl << std::endl;
+        std::cout << std::endl;
         out << std::endl << std::endl;
     }
 

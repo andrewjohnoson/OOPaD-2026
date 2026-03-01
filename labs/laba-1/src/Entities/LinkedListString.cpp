@@ -43,7 +43,8 @@ int LinkedListString::find(const std::string& value) {
 
 void LinkedListString::view() {
     if (this->size == 0) {
-        std::cout << "Список не содержит элементов." << std::endl;
+        std::cout << "ID списка: " << this->id << std::endl;
+        std::cout << "Элементы списка: " << std::endl << std::endl;
         return;
     }
 
@@ -198,7 +199,6 @@ void LinkedListString::setList(const LinkedListString &list) {
 
 std::string* LinkedListString::getList() {
     if (this->listString == nullptr) {
-        std::cout << "Списка не существует.";
         return nullptr;
     }
     return this->listString;
@@ -206,7 +206,6 @@ std::string* LinkedListString::getList() {
 
 int LinkedListString::getSize() {
     if (this->size == 0) {
-        std::cout << "Список не задан." << std::endl;
         return -1;
     }
     return this->size;
