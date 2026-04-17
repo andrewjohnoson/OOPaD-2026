@@ -68,3 +68,9 @@ void TerminalController::openExecutable(const std::string& pathToExecutable) {
     sleep(3);
     enableInput();
 }
+
+void TerminalController::waitForClick() {
+    std::cout << "Нажмите клавишу, чтобы продолжить." << std::flush;
+    getch();
+    clearTerminal();
+}

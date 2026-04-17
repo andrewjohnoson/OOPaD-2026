@@ -7,6 +7,7 @@ public:
     static int inputNatural();
     static int inputIndex();
     static int inputInt();
+    static unsigned inputUnsigned();
 };
 
 

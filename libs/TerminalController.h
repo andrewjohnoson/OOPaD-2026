@@ -11,6 +11,7 @@ public:
     static void openExecutable(const std::string &);
     static void disableInput();
     static void enableInput();
+    static void waitForClick();
 };
 
 

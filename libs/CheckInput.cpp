@@ -51,3 +51,18 @@ int CheckInput::inputInt() {
 
     return x;
 }
+
+unsigned CheckInput::inputUnsigned() {
+    unsigned x;
+
+    while (!(std::cin >> x) || std::cin.peek() != '\n') {
+        std::cout << "Ошибка ввода." << std::endl;
+
+        std::cin.clear();
+        while (std::cin.peek() != '\n') {
+            std::cin.ignore();
+        }
+    }
+
+    return x;
+}

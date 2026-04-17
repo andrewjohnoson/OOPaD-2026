@@ -157,6 +157,11 @@ void ListStringController::sortList() {
             continue;
         }
 
+        if (requiredListString->getSize() == -1) {
+            std::cout << "Список пуст." << std::endl;
+            continue;
+        }
+
         std::cout << "Как хотите отсортировать список (0 - в порядке возрастания, 1 - в порядке убывания): ";
         int param;
         do {
@@ -307,6 +312,11 @@ void ListStringController::findElementInList() {
             continue;
         }
 
+        if (requiredListString->getSize() == -1) {
+            std::cout << "Список пуст." << std::endl;
+            continue;
+        }
+
         std::cout << "Введите элемент: ";
 
         std::cin.ignore();
@@ -357,6 +367,11 @@ void ListStringController::removeElementFromList() {
 
         if (requiredListString == nullptr) {
             std::cout << "Списка с таким ID не существует." << std::endl;
+            continue;
+        }
+
+        if (requiredListString->getSize() == -1) {
+            std::cout << "Список пуст." << std::endl;
             continue;
         }
 

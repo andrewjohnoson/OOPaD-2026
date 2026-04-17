@@ -154,6 +154,11 @@ void ListIntController::sortList() {
             continue;
         }
 
+        if (requiredListInt->getSize() == -1) {
+            std::cout << "Список пуст." << std::endl;
+            continue;
+        }
+
         std::cout << "Как хотите отсортировать список (0 - в порядке возрастания, 1 - в порядке убывания): ";
         int param;
         do {
@@ -304,6 +309,11 @@ void ListIntController::findElementInList() {
             continue;
         }
 
+        if (requiredListInt->getSize() == -1) {
+            std::cout << "Список пуст." << std::endl;
+            continue;
+        }
+
         std::cout << "Введите элемент: ";
 
         const int x = CheckInput::inputInt();
@@ -353,6 +363,11 @@ void ListIntController::removeElementFromList() {
 
         if (requiredListInt == nullptr) {
             std::cout << "Списка с таким ID не существует." << std::endl;
+            continue;
+        }
+
+        if (requiredListInt->getSize() == -1) {
+            std::cout << "Список пуст." << std::endl;
             continue;
         }
 

@@ -6,8 +6,8 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(laba-1 src/laba-1.cpp
     ../../libs/Menu.cpp
     ../../libs/Menu.h
-    ../../libs/CheckInput.cpp
-    ../../libs/CheckInput.h
+        ../../libs/CheckInput.cpp
+        ../../libs/CheckInput.h
     ../../libs/TerminalController.cpp
     ../../libs/TerminalController.h
     src/Entities/LinkedListInt.cpp

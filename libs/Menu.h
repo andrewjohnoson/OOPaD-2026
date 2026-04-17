@@ -8,7 +8,7 @@
 class Menu {
 protected:
     std::vector<std::string> menuPoints;
-    std::string menuTitle = "";
+    std::string menuTitle;
     const int UP_ARROW_BUTTON = 0, DOWN_ARROW_BUTTON = 1, ENTER_BUTTON = 2, NOT_SUITABLE_BUTTON = -1;
     int selected = 1, menuCounter = 0;
 

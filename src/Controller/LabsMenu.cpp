@@ -19,7 +19,7 @@ void LabsMenu::init() {
 int LabsMenu::countAmountOfLabs() {
     int amountOfLabs = 0;
 
-    for (const auto& entry : fs::directory_iterator(this->labsFolderPath)) {
+    for (const auto& entry : fs::directory_iterator(labsFolderPath)) {
         amountOfLabs++;
     }
 
