@@ -1,4 +1,7 @@
+//LocalDate.cpp
 #include "LocalDate.h"
+
+#include <sstream>
 
 LocalDate::LocalDate(const unsigned y, const unsigned m, const unsigned d) {
     setYear(y);
@@ -7,7 +10,7 @@ LocalDate::LocalDate(const unsigned y, const unsigned m, const unsigned d) {
 }
 
 void LocalDate::setYear(const unsigned y) {
-    if (y > 2300) {
+    if (y < 2000 || y > 2300) {
         year = 0;
         return;
     }
@@ -57,7 +60,7 @@ void LocalDate::setDay(unsigned d) {
 }
 
 bool LocalDate::isLeapYear(const unsigned y) {
-    if (y % 4 == 0 && y % 100 != 0 && y % 400 == 0) {
+    if (y % 400 == 0 || (y % 4 == 0 && y % 100 != 0)) {
         return true;
     }
     return false;
@@ -89,4 +92,24 @@ std::string LocalDate::getSeason() const {
     }
 
     return "Осень";
+}
+
+std::ostream& operator<< (std::ostream& os, const LocalDate& date) {
+    std::stringstream ss;
+    ss << date.year << "-";
+
+    if (date.month < 10) {
+        ss << "0" << date.month << "-";
+    } else {
+        ss << date.month << "-";
+    }
+
+    if (date.day < 10) {
+        ss << "0" << date.day;
+    } else {
+        ss << date.day;
+    }
+
+    os << ss.str() << " " << date.getSeason();
+    return os;
 }

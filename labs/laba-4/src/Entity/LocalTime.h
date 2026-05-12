@@ -1,3 +1,4 @@
+// LocalTime.h
 #ifndef OOPAD_2026_LOCALTIME_H
 #define OOPAD_2026_LOCALTIME_H
 
@@ -12,6 +13,8 @@ public:
     void setHour(unsigned);
     void setMinute(unsigned);
     std::string getTimeOfDay() const;
+
+    friend std::ostream& operator<< (std::ostream &, const LocalTime &);
 };
 
 

@@ -1,3 +1,4 @@
+// LocalDate.h
 #ifndef OOPAD_2026_LOCALDATE_H
 #define OOPAD_2026_LOCALDATE_H
 
@@ -16,6 +17,8 @@ public:
     void setYear(unsigned);
     std::string getSeason() const;
     static bool isLeapYear(unsigned);
+
+    friend std::ostream& operator<< (std::ostream &, const LocalDate &);
 };
 
 

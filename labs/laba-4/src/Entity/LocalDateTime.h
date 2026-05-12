@@ -1,3 +1,4 @@
+// LocalDateTime.h
 #ifndef OOPAD_2026_LOCALDATETIME_H
 #define OOPAD_2026_LOCALDATETIME_H
 
@@ -11,19 +12,21 @@ protected:
     LocalDate localDate;
     LocalTime localTime;
 public:
-    LocalDateTime(int = 0, int = 0, int = 0, int = 0, int = 0);
+    LocalDateTime(unsigned = 0, unsigned = 0, unsigned = 0, unsigned = 0, unsigned = 0);
     unsigned getHour() const;
     unsigned getMinute() const;
     unsigned getDay() const;
     unsigned getMonth() const;
     unsigned getYear() const;
-    void setHour(int);
-    void setMinute(int);
-    void setDay(int);
-    void setMonth(int);
-    void setYear(int);
+    void setHour(unsigned);
+    void setMinute(unsigned);
+    void setDay(unsigned);
+    void setMonth(unsigned);
+    void setYear(unsigned);
     std::string getSeason() const;
     std::string getTimeOfDay() const;
+
+    friend std::ostream& operator<< (std::ostream &, const LocalDateTime &);
 };
 
 

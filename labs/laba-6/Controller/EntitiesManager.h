@@ -1,0 +1,10 @@
+#ifndef OOPAD_2026_ENTITIESMANAGER_H
+#define OOPAD_2026_ENTITIESMANAGER_H
+
+
+class EntitiesManager {
+
+};
+
+
+#endif //OOPAD_2026_ENTITIESMANAGER_H
