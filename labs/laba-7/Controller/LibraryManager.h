@@ -1,0 +1,9 @@
+#ifndef OOPAD_2026_LIBRARYMANAGER_H
+#define OOPAD_2026_LIBRARYMANAGER_H
+
+
+class LibraryManager {
+};
+
+
+#endif //OOPAD_2026_LIBRARYMANAGER_H

@@ -1,0 +1,9 @@
+#ifndef OOPAD_2026_BUILDINGMATERIAL_H
+#define OOPAD_2026_BUILDINGMATERIAL_H
+
+
+class BuildingMaterial {
+};
+
+
+#endif //OOPAD_2026_BUILDINGMATERIAL_H

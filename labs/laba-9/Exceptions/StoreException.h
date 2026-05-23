@@ -1,0 +1,9 @@
+#ifndef OOPAD_2026_STOREEXCEPTION_H
+#define OOPAD_2026_STOREEXCEPTION_H
+
+
+class StoreException {
+};
+
+
+#endif //OOPAD_2026_STOREEXCEPTION_H

@@ -1,0 +1,9 @@
+#ifndef OOPAD_2026_ORGANISATION_H
+#define OOPAD_2026_ORGANISATION_H
+
+
+class Organisation {
+};
+
+
+#endif //OOPAD_2026_ORGANISATION_H

@@ -1,0 +1,9 @@
+#ifndef OOPAD_2026_TRANSACTION_H
+#define OOPAD_2026_TRANSACTION_H
+
+
+class Transaction {
+};
+
+
+#endif //OOPAD_2026_TRANSACTION_H

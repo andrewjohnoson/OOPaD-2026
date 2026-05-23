@@ -1,0 +1,9 @@
+#ifndef OOPAD_2026_TRANSACTIONMENU_H
+#define OOPAD_2026_TRANSACTIONMENU_H
+
+
+class TransactionMenu {
+};
+
+
+#endif //OOPAD_2026_TRANSACTIONMENU_H

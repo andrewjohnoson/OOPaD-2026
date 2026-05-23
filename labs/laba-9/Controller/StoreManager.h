@@ -1,0 +1,9 @@
+#ifndef OOPAD_2026_STOREMANAGER_H
+#define OOPAD_2026_STOREMANAGER_H
+
+
+class StoreManager {
+};
+
+
+#endif //OOPAD_2026_STOREMANAGER_H
