@@ -1,0 +1,278 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+skinparam classFontSize 13
+skinparam classBackgroundColor #FAFAFA
+skinparam classBorderColor #888888
+skinparam arrowColor #444444
+skinparam linetype ortho
+
+' ══════════════════════════════
+'  ИСКЛЮЧЕНИЯ
+' ══════════════════════════════
+
+class StoreException {
+    - message_ : string
+    --
+    + StoreException(msg : string)
+    + what() : const char* <<noexcept>>
+}
+
+class InvalidPriceException {
+    --
+    + InvalidPriceException(price : double)
+}
+
+class InvalidQuantityException {
+    --
+    + InvalidQuantityException(qty : int)
+}
+
+class OutOfStockException {
+    - itemName_  : string
+    - requested_ : int
+    - available_ : int
+    --
+    + OutOfStockException(name : string, requested : int, available : int)
+    + printDetails() : void
+}
+
+class EmptyOrderException {
+    --
+    + EmptyOrderException()
+}
+
+StoreException <|-- InvalidPriceException
+StoreException <|-- InvalidQuantityException
+StoreException <|-- OutOfStockException
+StoreException <|-- EmptyOrderException
+
+' ══════════════════════════════
+'  СУЩНОСТИ
+' ══════════════════════════════
+
+abstract class Product {
+    # id_    : int
+    # name_  : string
+    # price_ : double
+    # stock_ : int
+    --
+    + Product()
+    + Product(id : int, name : string, price : double, stock : int)
+    + getId()    : int
+    + setId(id : int) : void
+    + getName()  : const string&
+    + setName(name : string) : void
+    + getPrice() : double
+    + setPrice(price : double) : void
+    + getStock() : int
+    + setStock(stock : int) : void
+    + reduceStock(qty : int) : void
+    + restoreStock(qty : int) : void
+    + print() : void <<virtual>>
+    + getCategory() : string <<virtual>>
+}
+
+class BuildingMaterial {
+    - unit_ : string
+    --
+    + BuildingMaterial()
+    + BuildingMaterial(id : int, name : string, price : double, stock : int, unit : string)
+    + getUnit() : const string&
+    + getCategory() : string <<override>>
+    + print() : void <<override>>
+}
+
+class Tool {
+    - brand_ : string
+    --
+    + Tool()
+    + Tool(id : int, name : string, price : double, stock : int, brand : string)
+    + getBrand() : const string&
+    + getCategory() : string <<override>>
+    + print() : void <<override>>
+}
+
+Product <|-- BuildingMaterial
+Product <|-- Tool
+
+' Product бросает исключения в своих методах
+Product ..> InvalidPriceException    : <<throws>>
+Product ..> InvalidQuantityException : <<throws>>
+Product ..> OutOfStockException      : <<throws>>
+
+class OrderItem {
+    - product_  : Product*
+    - quantity_ : int
+    --
+    + OrderItem()
+    + OrderItem(product : Product*, quantity : int)
+    + setProduct(p : Product*) : void
+    + setQuantity(q : int) : void
+    + getProduct() : Product*
+    + getQuantity() : int
+    + subtotal() : double
+}
+
+' OrderItem агрегирует Product (не владеет)
+OrderItem "1" o-- "1" Product : product_
+
+class Order {
+    - orderNumber_ : int
+    - items_ : vector<OrderItem>
+    --
+    + Order()
+    + Order(num : int)
+    + getId() : int
+    + addItem(product : Product*, qty : int) : void
+    + addItemRaw(product : Product*, qty : int) : void
+    + removeItem(productId : int, warehouse : Warehouse&) : void
+    + getItems() : const vector<OrderItem>&
+    + total() : double
+    + {static} printOrderBody(num : int, items : vector<OrderItem>&) : void
+    + printPreview() : void
+    + confirm() : void
+    + isEmpty() : bool
+}
+
+' Order владеет OrderItem (композиция)
+Order "1" *-- "0..*" OrderItem : items_
+
+Order ..> EmptyOrderException : <<throws>>
+
+class Warehouse {
+    - products_ : vector<Product*>
+    --
+    + addProduct(p : Product*) : void
+    + findProduct(name : string) : Product*
+    + findProduct(id : int) : Product*
+    + getAll() : const vector<Product*>&
+    + printAll() : void
+}
+
+' Warehouse агрегирует Product (не владеет)
+Warehouse "1" o-- "0..*" Product : products_
+
+class Store {
+    - name_      : string
+    - address_   : string
+    - warehouse_ : Warehouse
+    - orders_    : vector<shared_ptr<Order>>
+    --
+    + Store()
+    + Store(name : string, address : string)
+    + getName()    : const string&
+    + setName(n : string) : void
+    + getAddress() : const string&
+    + setAddress(a : string) : void
+    + getWarehouse() : Warehouse&
+    + addOrder(order : shared_ptr<Order>) : void
+    + getOrders() : const vector<shared_ptr<Order>>&
+    + findOrder(id : int) : shared_ptr<Order>
+    + confirmOrder(id : int) : void
+    + cancelOrder(id : int) : void
+    + addProduct(p : Product*) : void
+    + showCatalog() : void
+    + addToOrder(order : Order&, name : string, qty : int) : void
+}
+
+' Store владеет Warehouse (композиция)
+Store "1" *-- "1" Warehouse : warehouse_
+
+' Store владеет заказами (композиция через shared_ptr)
+Store "1" *-- "0..*" Order : orders_
+
+' ══════════════════════════════
+'  КОНТРОЛЛЕРЫ
+' ══════════════════════════════
+
+class StoreManager {
+    - {static} storeTerminate() : void
+    - {static} generateId() : int
+    - {static} inputStringSafe(prompt : string) : string
+    --
+    + {static} addBuildingMaterial(store : Store&) : void
+    + {static} addTool(store : Store&) : void
+    + {static} createOrder(store : Store&) : void
+    + {static} addItemToOrder(store : Store&) : void
+    + {static} confirmOrder(store : Store&) : void
+    + {static} cancelOrder(store : Store&) : void
+    + {static} printCatalog(store : Store&) : void
+    + {static} printOrders(store : Store&) : void
+    + {static} changeStoreInfo(store : Store&) : void
+    + {static} showDemoMenu(store : Store&) : void
+    + {static} load(store : Store&) : void
+    + {static} save(store : Store&) : void
+}
+
+StoreManager ..> Store : <<uses>>
+
+class Menu {
+    # menuPoints   : vector<string>
+    # menuTitle    : string
+    # selected     : int
+    # menuCounter  : int
+    # UP_ARROW_BUTTON    : int
+    # DOWN_ARROW_BUTTON  : int
+    # ENTER_BUTTON       : int
+    # NOT_SUITABLE_BUTTON : int
+    --
+    # showMenu() : void <<virtual>>
+    # doMenuAction(selected : int) : void <<virtual>>
+    # getButton() : int
+    + init(menuSettings : vector<string>) : void
+    + init(menuSettings : vector<string>, menuTitle : string) : void <<virtual>>
+    + init(menuTitle : string) : void
+}
+
+class NinthLabMenu {
+    - store_ : Store
+    --
+    + NinthLabMenu()
+    # doMenuAction(selected : int) : void <<override>>
+}
+
+class OrderMenu {
+    - store_        : Store&
+    - currentOrder_ : shared_ptr<Order>
+    - isActive      : bool
+    --
+    + OrderMenu(store : Store&)
+    # showMenu() : void <<override>>
+    # doMenuAction(selected : int) : void <<override>>
+    - selectOrder() : void
+    - addProduct() : void
+    - removeProduct() : void
+    - showOrder() : void
+}
+
+class DemoMenu {
+    - store_    : Store&
+    - isActive_ : bool
+    --
+    + DemoMenu(store : Store&)
+    # showMenu() : void <<override>>
+    # doMenuAction(selected : int) : void <<override>>
+    - {static} demoConstructorException() : void
+    - demoTerminate() : void
+}
+
+Menu <|-- NinthLabMenu
+Menu <|-- OrderMenu
+Menu <|-- DemoMenu
+
+' NinthLabMenu владеет Store (композиция)
+NinthLabMenu "1" *-- "1" Store : store_
+
+' OrderMenu и DemoMenu агрегируют Store (ссылка, не владеют)
+OrderMenu "1" o-- "1" Store : store_
+DemoMenu  "1" o-- "1" Store : store_
+
+' NinthLabMenu использует StoreManager
+NinthLabMenu ..> StoreManager : <<uses>>
+
+' StoreManager создаёт OrderMenu и DemoMenu
+StoreManager ..> OrderMenu : <<creates>>
+StoreManager ..> DemoMenu  : <<creates>>
+
+@enduml

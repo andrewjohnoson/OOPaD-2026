@@ -127,5 +127,99 @@ add_executable(laba-6 labs/laba-6/laba-6.cpp
         labs/laba-6/Controller/SixthLabMenu.h
         labs/laba-6/Controller/EntitiesManager.cpp
         labs/laba-6/Controller/EntitiesManager.h
-
 )
+
+add_executable(laba-7 labs/laba-7/laba-7.cpp
+        libs/TerminalController.h
+        libs/TerminalController.cpp
+        libs/CheckInput.h
+        libs/CheckInput.cpp
+        libs/Menu.h
+        libs/Menu.cpp
+        labs/laba-7/Controller/SevenLabMenu.cpp
+        labs/laba-7/Controller/SevenLabMenu.h
+        labs/laba-7/Entities/Catalog.h
+        labs/laba-7/Entities/Organisation.cpp
+        labs/laba-7/Entities/Organisation.h
+        labs/laba-7/Entities/Book.cpp
+        labs/laba-7/Entities/Book.h
+        labs/laba-7/Entities/Reader.cpp
+        labs/laba-7/Entities/Reader.h
+        labs/laba-7/Entities/Subscription.cpp
+        labs/laba-7/Entities/Subscription.h
+        labs/laba-7/Entities/Employee.cpp
+        labs/laba-7/Entities/Employee.h
+        labs/laba-7/Entities/Library.cpp
+        labs/laba-7/Entities/Library.h
+        labs/laba-7/Controller/LibraryManager.cpp
+        labs/laba-7/Controller/LibraryManager.h
+)
+
+add_executable(laba-8 labs/laba-8/laba-8.cpp
+        libs/TerminalController.h
+        libs/TerminalController.cpp
+        libs/CheckInput.h
+        libs/CheckInput.cpp
+        libs/Menu.h
+        libs/Menu.cpp
+        labs/laba-8/Controller/EighthLabMenu.cpp
+        labs/laba-8/Controller/EighthLabMenu.h
+        labs/laba-8/Entities/Catalog.h
+        labs/laba-8/Entities/Organisation.cpp
+        labs/laba-8/Entities/Organisation.h
+        labs/laba-8/Entities/Book.cpp
+        labs/laba-8/Entities/Book.h
+        labs/laba-8/Entities/Reader.cpp
+        labs/laba-8/Entities/Reader.h
+        labs/laba-8/Entities/Subscription.cpp
+        labs/laba-8/Entities/Subscription.h
+        labs/laba-8/Entities/Employee.cpp
+        labs/laba-8/Entities/Employee.h
+        labs/laba-8/Entities/Library.cpp
+        labs/laba-8/Entities/Library.h
+        labs/laba-8/Controller/LibraryManager.cpp
+        labs/laba-8/Controller/LibraryManager.h
+        labs/laba-8/Entities/Transaction.h
+        labs/laba-8/Controller/TransactionMenu.cpp
+        labs/laba-8/Controller/TransactionMenu.h
+)
+
+add_executable(laba-9 labs/laba-9/laba-9.cpp
+        libs/TerminalController.h
+        libs/TerminalController.cpp
+        libs/CheckInput.h
+        libs/CheckInput.cpp
+        libs/Menu.h
+        libs/Menu.cpp
+        labs/laba-9/Controller/NinthLabMenu.cpp
+        labs/laba-9/Controller/NinthLabMenu.h
+        labs/laba-9/Entities/Product.cpp
+        labs/laba-9/Entities/Product.h
+        labs/laba-9/Entities/BuildingMaterial.cpp
+        labs/laba-9/Entities/BuildingMaterial.h
+        labs/laba-9/Entities/Tool.cpp
+        labs/laba-9/Entities/Tool.h
+        labs/laba-9/Entities/Warehouse.cpp
+        labs/laba-9/Entities/Warehouse.h
+        labs/laba-9/Entities/OrderItem.cpp
+        labs/laba-9/Entities/OrderItem.h
+        labs/laba-9/Entities/Order.cpp
+        labs/laba-9/Entities/Order.h
+        labs/laba-9/Entities/Store.cpp
+        labs/laba-9/Entities/Store.h
+        labs/laba-9/Exceptions/StoreException.cpp
+        labs/laba-9/Exceptions/StoreException.h
+        labs/laba-9/Exceptions/OutOfStockException.cpp
+        labs/laba-9/Exceptions/OutOfStockException.h
+        labs/laba-9/Exceptions/InvalidQuantityException.cpp
+        labs/laba-9/Exceptions/InvalidQuantityException.h
+        labs/laba-9/Exceptions/InvalidPriceException.cpp
+        labs/laba-9/Exceptions/InvalidPriceException.h
+        labs/laba-9/Exceptions/EmptyOrderException.cpp
+        labs/laba-9/Exceptions/EmptyOrderException.h
+        labs/laba-9/Controller/StoreManager.cpp
+        labs/laba-9/Controller/StoreManager.h
+        labs/laba-9/Controller/OrderMenu.cpp
+        labs/laba-9/Controller/OrderMenu.h
+)
+

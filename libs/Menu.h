@@ -17,7 +17,7 @@ protected:
     int getButton();
 public:
     void init(const std::vector<std::string> &);
-    void init(const std::vector<std::string> &, std::string);
+    virtual void init(const std::vector<std::string> &, std::string);
     void init(std::string);
 };
 

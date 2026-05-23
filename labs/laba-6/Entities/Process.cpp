@@ -1,3 +1,4 @@
+// Process.cpp
 #include "Process.h"
 
 #include <iostream>
@@ -36,5 +37,6 @@ void Process::stop() {
 
 void Process::print() {
     std::cout << "Процесс: " << processName << " | запущен: "
-            << (isRunning ? "да" : "нет") << (isRunning ? std::string("Дата запуска: ").append(startDate.getDate()) : "");
+            << (isRunning ? "да " : "нет") << (isRunning ? std::string(" | Дата запуска: ").append(startDate.getDate()) : "");
 }
+

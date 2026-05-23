@@ -5,7 +5,7 @@
 
 class SixthLabMenu : public Menu {
     enum menuPoints {
-
+        SHOW_PROCESSES = 1, SHOW_HUMAN_ACTIVITIES, SHOW_GAMES, SHOW_ESPORTS, SHOW_COMPETITIVE_SPORTS
     };
     void doMenuAction(int) override;
 };

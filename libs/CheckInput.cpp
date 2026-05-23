@@ -25,15 +25,14 @@ int CheckInput::inputIndex() {
 
     while (!(std::cin >> x) || std::cin.peek() != '\n' || x < 1) {
         if (x == -1) {
-            break;
-        }
-
-        std::cout << "Ошибка ввода. Необходимо ввести число n > 0" << std::endl;
+            return x;
+        };
 
         std::cin.clear();
         while (std::cin.peek() != '\n') {
             std::cin.ignore();
         }
+        std::cout << "Ошибка ввода. Введите число n > 0 или -1 для выхода: ";
     }
 
     std::cin.ignore();
@@ -181,7 +180,7 @@ bool CheckInput::isLeapYear(unsigned year) {
 unsigned CheckInput::inputHour() {
     unsigned h;
 
-    while (!(std::cin >> h) || std::cin.peek() != '\n' || h > 24) {
+    while (!(std::cin >> h) || std::cin.peek() != '\n' || h > 23) {
         std::cout << "Число от 0 до 23. Повторите ввод: ";
 
         std::cin.clear();

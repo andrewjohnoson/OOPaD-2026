@@ -3,8 +3,10 @@
 
 #include <vector>
 #include <string>
+#include <locale>
 
 int main() {
+    setlocale(LC_ALL, "ru_RU.UTF-8");
     const std::vector<std::string> menuSettings({"Создать массив целых чисел", "Создать массив вещественных чисел",
                 "Сортировать массив", "Вывести массив" ,"Удалить массив"});
     const std::string menuTitle = "Меню 2-й лабораторной работы";

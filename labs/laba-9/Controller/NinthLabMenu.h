@@ -1,19 +1,30 @@
-#ifndef OOPAD_2026_SEVENLABMENU_H
-#define OOPAD_2026_SEVENLABMENU_H
+#ifndef OOPAD_2026_NINTHLABMENU_H
+#define OOPAD_2026_NINTHLABMENU_H
 
 #include "../../../libs/Menu.h"
-#include "../Entities/Library.h"
+#include "../Entities/Store.h"
 
-class EighthLabMenu : public Menu {
-    enum menuPoints {
-        ADD_BOOK = 1, ADD_READER, ADD_EMPLOYEE, CREATE_SUBSCRIPTION, ASSIGN_SUBSCRIPTION,
-        RELEASE_SUBSCRIPTION, ADD_BOOK_TO_SUBSCRIPTION, CHANGE_LIB_INFO, SAVE_INFO, SHOW_ALL
+class NinthLabMenu : public Menu {
+    enum menuPoints_ {
+        ADD_BUILDING_MATERIAL = 1,
+        ADD_TOOL,
+        CREATE_ORDER,
+        ADD_ITEM_TO_ORDER,
+        CONFIRM_ORDER,
+        CANCEL_ORDER,
+        SHOW_CATALOG,
+        SHOW_ORDERS,
+        CHANGE_STORE_INFO,
+        SAVE_INFO,
+        DEMO_EXCEPTIONS
     };
-    Library lib;
+
+    Store store_;
+
     void doMenuAction(int) override;
 public:
-    EighthLabMenu();
+    NinthLabMenu();
 };
 
 
-#endif //OOPAD_2026_SEVENLABMENU_H
+#endif //OOPAD_2026_NINTHLABMENU_H

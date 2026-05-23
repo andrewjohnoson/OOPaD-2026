@@ -3,8 +3,10 @@
 
 #include <vector>
 #include <string>
+#include <locale>
 
 int main() {
+    setlocale(LC_ALL, "ru_RU.UTF-8");
     const std::vector<std::string> lines ({"Работа с классом LinkedListInt",
         "Работа с классом LinkedListString.",
         });

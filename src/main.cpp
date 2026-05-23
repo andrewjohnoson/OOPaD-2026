@@ -1,10 +1,9 @@
 #include <iostream>
-#include <string>
 
 #include "Controller/LabsMenu.h"
 
 int main() {
-    setlocale(LC_ALL, "rus");
+    setlocale(LC_ALL, "ru_RU.UTF-8");
 
     LabsMenu menu;
     menu.init();

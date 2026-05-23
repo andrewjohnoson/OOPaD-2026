@@ -1,3 +1,4 @@
+// HumanActivity.cpp
 #include "HumanActivity.h"
 
 #include <iostream>
@@ -15,7 +16,7 @@ int HumanActivity::getParticipantCount() const {
     return participantCount;
 }
 
-bool HumanActivity::getRequires_physical() const {
+bool HumanActivity::getRequiresPhysical() const {
     return requiresPhysical;
 }
 
@@ -37,12 +38,12 @@ void HumanActivity::setPurpose(const string &purposeStr) {
 
 std::string HumanActivity::getDescription() const {
     return processName +
-        " | участников" + std::to_string(participantCount)
+        " | участников: " + std::to_string(participantCount)
          + " | цель: " + purpose
-         + " | требуется физическая нагрузка: "  + (requiresPhysical ? "да" : "нет");
+         + " | требуется физическая нагрузка: "  + (requiresPhysical ? "да " : "нет ");
 }
 
 void HumanActivity::print() {
     std::cout << "Человеческая деятельность: " << getDescription() <<
-        (isRunning ? std::string("Дата запуска: ").append(startDate.getDate()) : "") << std::endl;
+        (isRunning ? std::string(" | Дата запуска: ").append(startDate.getDate()) : "");
 }

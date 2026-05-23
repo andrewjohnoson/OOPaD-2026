@@ -1,13 +1,14 @@
 #include <iostream>
 
 #include "Controller/ThirdLabMenu.h"
-#include "Entity/Distance.h"
 
 #include <vector>
 #include <string>
+#include <locale>
 
 int main()
 {
+    setlocale(LC_ALL, "ru_RU.UTF-8");
     const std::vector<std::string> menuSettings ({
         "Ввести 1-ю дистанцию",
         "Ввести 2-ю дистанцию",

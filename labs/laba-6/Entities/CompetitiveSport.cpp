@@ -1,3 +1,4 @@
+// CompetitiveSport.cpp
 #include "CompetitiveSport.h"
 
 CompetitiveSport::CompetitiveSport(const std::string &f, int mAge, bool isOl) {
@@ -36,7 +37,7 @@ bool CompetitiveSport::isEligible(const int age) const {
 
 void CompetitiveSport::print() {
     std::cout << "CompetitiveSport:"
-                  << " федерация="    << federation
-                  << " | мин.возраст=" << minAge
-                  << " | олимпийский=" << (isOlympic ? "да" : "нет");
+                  << " федерация = "    << federation
+                  << " | мин.возраст = " << minAge
+                  << " | олимпийский = " << (isOlympic ? "да" : "нет");
 }

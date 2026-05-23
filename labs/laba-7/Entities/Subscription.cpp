@@ -1,57 +1,73 @@
-#include "Subscirption.h"
+// Subscription.cpp
+#include "Subscription.h"
 
 #include <iostream>
 
-int Subscirption::getId() const {
+#include "../../../libs/TerminalController.h"
+
+Subscription::~Subscription() {
+    for (const Book* b : books) {
+        delete b;
+    }
+    books.clear();
+}
+
+int Subscription::getId() const {
     return id;
 }
 
-Reader* Subscirption::getReader() const {
+Reader* Subscription::getReader() const {
     return reader;
 }
 
-const std::vector<Book*>& Subscirption::getBooks() const {
+const std::vector<Book*>& Subscription::getBooks() const {
     return books;
 }
 
-std::string Subscirption::getIssueDate() const {
-    return issueDate;
-}
-
-std::string Subscirption::getReturnDate() const {
-    return returnDate;
-}
-
-int Subscirption::getWorkerCount() const {
+int Subscription::getWorkerCount() const {
     return workerCount;
 }
 
-void Subscirption::setId(int i) { id = i; }
-void Subscirption::setReader(Reader* r) { reader = r; }
-void Subscirption::setIssueDate(const std::string& d) { issueDate = d; }
-void Subscirption::setReturnDate(const std::string& d) { returnDate = d; }
+void Subscription::setId(const int i) {
+    id = i;
+}
+
+void Subscription::setReader(Reader* r) {
+    reader = r;
+}
+
+void Subscription::setWorkerCount(const int w) {
+    workerCount = w;
+}
 
 // Блокировка абонемента сотрудником
-void Subscirption::lock() { ++workerCount; }
+void Subscription::lock() {
+    ++workerCount;
+}
 
 // Снятие блокировки
-void Subscirption::unlock() {
+void Subscription::unlock() {
     if (workerCount > 0) --workerCount;
 }
 
 // Абонемент доступен для редактирования?
-bool Subscirption::isEditable() const { return workerCount == 0; }
+bool Subscription::isEditable() const {
+    return workerCount == 0;
+}
 
-void Subscirption::addBook(Book* book) {
+void Subscription::addBook(Book* book) {
     if (!isEditable())
         throw std::runtime_error("Абонемент заблокирован — с ним работает сотрудник");
     books.push_back(book);
     book->takeOne();
 }
 
-void Subscirption::removeBook(int bookId) {
-    if (!isEditable())
-        throw std::runtime_error("Абонемент заблокирован — с ним работает сотрудник");
+void Subscription::removeBook(const int bookId) {
+    if (!isEditable()) {
+        std::cout << "Абонемент обрабатывается.";
+        TerminalController::waitForClick();
+        return;
+    }
     for (auto it = books.begin(); it != books.end(); ++it) {
         if ((*it)->getId() == bookId) {
             (*it)->returnOne();
@@ -61,13 +77,12 @@ void Subscirption::removeBook(int bookId) {
     }
 }
 
-void Subscirption::print() const {
+void Subscription::print() const {
     std::cout << "  Абонемент [" << id << "]: читатель — ";
     if (reader) std::cout << reader->getFullName();
     else std::cout << "не задан";
-    std::cout << "\n    Выдан: " << issueDate
-              << ", Вернуть до: " << returnDate
-              << ", Статус: " << (isEditable() ? "свободен" : "заблокирован")
+    std::cout << std::endl
+              << "  Статус: " << (isEditable() ? "свободен" : "заблокирован")
               << " (сотрудников: " << workerCount << ")\n";
     std::cout << "    Книги (" << books.size() << "):\n";
     for (Book* b : books) {

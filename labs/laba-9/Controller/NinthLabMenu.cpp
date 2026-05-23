@@ -1,59 +1,63 @@
-#include "EighthLabMenu.h"
+#include "NinthLabMenu.h"
 
 #include <iostream>
 
-#include "LibraryManager.h"
+#include "StoreManager.h"
 
-using lm = LibraryManager;
+using sm = StoreManager;
 
-EighthLabMenu::EighthLabMenu() {
-    lm::load(lib);
+NinthLabMenu::NinthLabMenu() {
+    sm::load(store_);
 }
 
-void EighthLabMenu::doMenuAction(int selected) {
+void NinthLabMenu::doMenuAction(int selected) {
     if (selected == menuCounter + 1) {
-        lm::save(lib);
+        sm::save(store_);
         std::cout << "Выход." << std::endl;
         exit(0);
     }
 
-    if (selected == ADD_BOOK) {
-        lm::addBook(lib);
+    if (selected == ADD_BUILDING_MATERIAL) {
+        sm::addBuildingMaterial(store_);
     }
 
-    if (selected == ADD_READER) {
-        lm::addReader(lib);
+    if (selected == ADD_TOOL) {
+        sm::addTool(store_);
     }
 
-    if (selected == ADD_EMPLOYEE) {
-        lm::addEmployee(lib);
+    if (selected == CREATE_ORDER) {
+        sm::createOrder(store_);
     }
 
-    if (selected == CREATE_SUBSCRIPTION) {
-        lm::createSubscription(lib);
+    if (selected == ADD_ITEM_TO_ORDER) {
+        sm::addItemToOrder(store_);
     }
 
-    if (selected == ASSIGN_SUBSCRIPTION) {
-        lm::assignEmployee(lib);
+    if (selected == CONFIRM_ORDER) {
+        sm::confirmOrder(store_);
     }
 
-    if (selected == RELEASE_SUBSCRIPTION) {
-        lm::releaseEmployee(lib);
+    if (selected == CANCEL_ORDER) {
+        sm::cancelOrder(store_);
     }
 
-    if (selected == ADD_BOOK_TO_SUBSCRIPTION) {
-        lm::addBookToSubscription(lib);
+    if (selected == SHOW_CATALOG) {
+        sm::printCatalog(store_);
     }
 
-    if (selected == SHOW_ALL) {
-        lm::printLibInfo(lib);
+    if (selected == SHOW_ORDERS) {
+        sm::printOrders(store_);
     }
 
-    if (selected == CHANGE_LIB_INFO) {
-        lm::changeLibInfo(lib);
+    if (selected == CHANGE_STORE_INFO) {
+        sm::changeStoreInfo(store_);
     }
 
     if (selected == SAVE_INFO) {
-        lm::save(lib);
+        sm::save(store_);
+    }
+
+    if (selected == DEMO_EXCEPTIONS) {
+        sm::showExceptionDemo();
     }
 }

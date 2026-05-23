@@ -1,3 +1,4 @@
+// HumanActivity.h
 #ifndef OOPAD_2026_HUMANACTIVITY_H
 #define OOPAD_2026_HUMANACTIVITY_H
 
@@ -17,7 +18,7 @@ public:
     ~HumanActivity() = default;
 
     int getParticipantCount() const;
-    bool getRequires_physical() const;
+    bool getRequiresPhysical() const;
     string getPurpose() const;
 
     void setParticipantCount(int participant_count);

@@ -3,8 +3,6 @@
 #include <vector>
 #include <string>
 #include <locale>
-#include <fstream>
-#include <iostream>
 
 int main() {
     setlocale(LC_ALL, "ru_RU.UTF-8");
